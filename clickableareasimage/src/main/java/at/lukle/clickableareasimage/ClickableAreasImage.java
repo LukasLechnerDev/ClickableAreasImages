@@ -15,7 +15,6 @@ import uk.co.senab.photoview.PhotoViewAttacher;
  */
 public class ClickableAreasImage implements PhotoViewAttacher.OnPhotoTapListener{
 
-    private ImageView imageView;
     private PhotoViewAttacher attacher;
     private OnClickableAreaClickedListener listener;
 
@@ -23,13 +22,6 @@ public class ClickableAreasImage implements PhotoViewAttacher.OnPhotoTapListener
 
     private int imageWidthInPx;
     private int imageHeightInPx;
-
-    public ClickableAreasImage(ImageView imageView, OnClickableAreaClickedListener listener){
-        getImageDimensions(imageView);
-        attacher = new PhotoViewAttacher(imageView);
-        attacher.setZoomable(false);
-        init(listener);
-    }
 
     public ClickableAreasImage(PhotoViewAttacher attacher, OnClickableAreaClickedListener listener){
         this.attacher = attacher;
@@ -80,13 +72,5 @@ public class ClickableAreasImage implements PhotoViewAttacher.OnPhotoTapListener
 
     public List<ClickableArea> getClickableAreas() {
         return clickableAreas;
-    }
-
-    public int getImageWidthInPx() {
-        return imageWidthInPx;
-    }
-
-    public int getImageHeightInPx() {
-        return imageHeightInPx;
     }
 }

@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements OnClickableAreaCl
 
         attacher = new PhotoViewAttacher(image);
         ClickableAreasImage clickableAreasImage = new ClickableAreasImage(attacher, this);
-        //ClickableAreasImage clickableAreasImage = new ClickableAreasImage(image, this);
 
         List<ClickableArea> clickableAreas = getClickableAreas();
         clickableAreasImage.setClickableAreas(clickableAreas);
