@@ -41,8 +41,6 @@ public class MainActivity extends AppCompatActivity implements OnClickableAreaCl
     @NonNull
     private List<ClickableArea> getClickableAreas() {
 
-        int cellWidth = 320;
-        int cellHeight = 439;
         List<ClickableArea> clickableAreas = new ArrayList<>();
 
         clickableAreas.add(new ClickableArea(65,367,191,273,new Person("Gustavo","Fring")));
