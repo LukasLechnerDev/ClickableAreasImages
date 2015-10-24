@@ -56,7 +56,9 @@ public class MainActivity extends AppCompatActivity implements OnClickableAreaCl
 
         clickableAreas.add(new ClickableArea(0,cellHeight*2,cellWidth,cellHeight,"Putenschinken"));
         clickableAreas.add(new ClickableArea(cellWidth, cellHeight * 2, cellWidth, cellHeight, "Schärdinger Österkron"));
-        clickableAreas.add(new ClickableArea(cellWidth*2,cellHeight*2,cellWidth,cellHeight,"Zaziki"));
+
+        Person heisenberg = new Person("Walter","White");
+        clickableAreas.add(new ClickableArea(cellWidth*2,cellHeight*2,cellWidth,cellHeight,heisenberg));
 
         return clickableAreas;
     }
@@ -72,7 +74,13 @@ public class MainActivity extends AppCompatActivity implements OnClickableAreaCl
     }
 
     @Override
-    public void onClickableAreaTouched(String label) {
-        Toast.makeText(this, label, Toast.LENGTH_SHORT).show();
+    public void onClickableAreaTouched(Object item) {
+        String text = "";
+        if(item instanceof String){
+            text = (String) item;
+        } else if (item instanceof Person){
+            text = ((Person) item).getFirstName() + " " + ((Person) item).getLastName();
+        }
+        Toast.makeText(this,text, Toast.LENGTH_SHORT).show();
     }
 }
