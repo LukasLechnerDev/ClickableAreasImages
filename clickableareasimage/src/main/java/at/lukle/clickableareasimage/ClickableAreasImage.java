@@ -1,5 +1,6 @@
 package at.lukle.clickableareasimage;
 
+import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
 import android.view.View;
 import android.widget.ImageView;
@@ -44,8 +45,8 @@ public class ClickableAreasImage implements PhotoViewAttacher.OnPhotoTapListener
 
     private void getImageDimensions(ImageView imageView){
         BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
-        imageWidthInPx = drawable.getBitmap().getWidth() / 4;
-        imageHeightInPx = drawable.getBitmap().getHeight() / 4;
+        imageWidthInPx = (int) (drawable.getBitmap().getWidth() / Resources.getSystem().getDisplayMetrics().density);
+        imageHeightInPx = (int) (drawable.getBitmap().getHeight() / Resources.getSystem().getDisplayMetrics().density);
     }
 
     @Override

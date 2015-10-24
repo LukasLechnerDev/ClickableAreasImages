@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import at.lukle.clickableareasimage.ClickableArea;
-import at.lukle.clickableareasimage.OnClickableAreaClickedListener;
 import at.lukle.clickableareasimage.ClickableAreasImage;
+import at.lukle.clickableareasimage.OnClickableAreaClickedListener;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class MainActivity extends AppCompatActivity implements OnClickableAreaClickedListener {
