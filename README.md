@@ -39,7 +39,7 @@ Sample Usage
             List<ClickableArea> clickableAreas = new ArrayList<>();
 
             // Define your clickable areas
-            // parameter values (pixels): x coordinate, y coordinate, width, height) and assign an object to it
+            // parameter values (pixels): (x coordinate, y coordinate, width, height) and assign an object to it
             clickableAreas.add(new ClickableArea(230, 185, 47, 72, new Person("Jesse", "Pinkman")));
             clickableAreas.add(new ClickableArea(275, 120, 112, 285, new Person("Walter", "\"Heisenberg\" White")));
             clickableAreasImage.setClickableAreas(clickableAreas);
