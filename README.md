@@ -1,10 +1,10 @@
 # ClickableAreasImages
-An android library that lets you define clickable areas in your images.
+An android library that lets you define rectangular clickable areas in your images.
 
 Description
 ===========
 
-ClickableAreaImages is an android library that lets you define clickable areas in your images and associate different objects to it. The images are zoomable and orientation changes are also handled.
+ClickableAreaImages is an android library that lets you define rectangular clickable areas in your images and associate different objects to it. The images are zoomable and orientation changes are also handled.
 
 ![demo image](https://raw.githubusercontent.com/Lukle/ClickableAreasImages/master/images/demo_image.png "Demo Image")
 
@@ -35,8 +35,11 @@ Sample Usage
             // Create your image
             ClickableAreasImage clickableAreasImage = new ClickableAreasImage(new PhotoViewAttacher(image), this);
 
-            // Define your clickable area (pixel values: x coordinate, y coordinate, width, height) and assign an object to it
+            // Initialize your clickable area list
             List<ClickableArea> clickableAreas = new ArrayList<>();
+
+            // Define your clickable areas
+            // parameter values (pixels): x coordinate, y coordinate, width, height) and assign an object to it
             clickableAreas.add(new ClickableArea(230, 185, 47, 72, new Person("Jesse", "Pinkman")));
             clickableAreas.add(new ClickableArea(275, 120, 112, 285, new Person("Walter", "\"Heisenberg\" White")));
             clickableAreasImage.setClickableAreas(clickableAreas);
