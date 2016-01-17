@@ -6,7 +6,7 @@ Description
 
 ClickableAreaImages is an android library that lets you define clickable areas in your images and associate different objects to it. The images are zoomable.
 
-[logo]: https://github.com/Lukle/ClickableAreasImages/images/demo_image.png
+[logo]: https://raw.githubusercontent.com/Lukle/ClickableAreasImages/master/images/demo_image.png
 
 Sample Application
 ==================
