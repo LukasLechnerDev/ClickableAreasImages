@@ -49,13 +49,14 @@ Sample Usage
                 Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
             }
         }
-´´´
+```
 
 Download
 ========
 
 Add it in your root build.gradle at the end of repositories:
 
+```gradle
     allprojects {
 		repositories {
 			...
@@ -68,6 +69,7 @@ Add the dependency
     dependencies {
 	        compile 'com.github.Lukle:ClickableAreasImages:v0.1'
 	}
+```
 
 License
 =======
