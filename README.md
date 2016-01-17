@@ -1,6 +1,24 @@
 # ClickableAreasImages
 An android library which lets you define clickable areas in your images.
 
+Download
+========
+
+Add it in your root build.gradle at the end of repositories:
+
+    allprojects {
+		repositories {
+			...
+			maven { url "https://jitpack.io" }
+		}
+	}
+
+Add the dependency
+
+    dependencies {
+	        compile 'com.github.Lukle:ClickableAreasImages:v0.1'
+	}
+
 License
 =======
 
