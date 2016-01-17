@@ -6,6 +6,7 @@ Description
 
 ClickableAreaImages is an android library that lets you define clickable areas in your images and associate different objects to it. The images are zoomable.
 
+[logo]: https://github.com/Lukle/ClickableAreasImages/images/demo_image.png
 
 Sample Application
 ==================
@@ -54,7 +55,7 @@ Sample Usage
 Download
 ========
 
-Add it in your root build.gradle at the end of repositories:
+Add it in your root build.gradle:
 
 ```gradle
     allprojects {
@@ -63,8 +64,6 @@ Add it in your root build.gradle at the end of repositories:
 			maven { url "https://jitpack.io" }
 		}
 	}
-
-Add the dependency
 
     dependencies {
 	        compile 'com.github.Lukle:ClickableAreasImages:v0.1'
