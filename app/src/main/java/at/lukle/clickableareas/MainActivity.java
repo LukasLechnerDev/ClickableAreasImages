@@ -19,23 +19,31 @@ import uk.co.senab.photoview.PhotoViewAttacher;
 public class MainActivity extends AppCompatActivity implements OnClickableAreaClickedListener {
 
     private final String TAG = getClass().getSimpleName();
-    PhotoViewAttacher attacher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
 
+        // Add image
         ImageView image = (ImageView) findViewById(R.id.imageView);
-        image.setImageResource(R.drawable.breaking_bad_people);
+        image.setImageResource(R.drawable.breaking_bad_people_small);
 
-        attacher = new PhotoViewAttacher(image);
-        ClickableAreasImage clickableAreasImage = new ClickableAreasImage(attacher, this);
+        // Create your image
+        ClickableAreasImage clickableAreasImage = new ClickableAreasImage(new PhotoViewAttacher(image), this);
 
+        // Define your clickable area (pixel values: x coordinate, y coordinate, width, height) and assign an object to it
         List<ClickableArea> clickableAreas = getClickableAreas();
         clickableAreasImage.setClickableAreas(clickableAreas);
+    }
+
+    // Listen for touches on your images:
+    @Override
+    public void onClickableAreaTouched(Object item) {
+        if (item instanceof Person) {
+            String text = ((Person) item).getFirstName() + " " + ((Person) item).getLastName();
+            Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+        }
     }
 
     @NonNull
@@ -43,15 +51,15 @@ public class MainActivity extends AppCompatActivity implements OnClickableAreaCl
 
         List<ClickableArea> clickableAreas = new ArrayList<>();
 
-        clickableAreas.add(new ClickableArea(65,367,191,273,new Person("Gustavo","Fring")));
-        clickableAreas.add(new ClickableArea(257,483,151,251,new Person("Saul","Goodman")));
-        clickableAreas.add(new ClickableArea(351,277,107,167,new Person("Mike","Ehrmantraut")));
-        clickableAreas.add(new ClickableArea(459,371,95,145,new Person("Jesse","Pinkman")));
-        clickableAreas.add(new ClickableArea(557,241,225,574,new Person("Walter","\"Heisenberg\" White")));
-        clickableAreas.add(new ClickableArea(889,553,133,235,new Person("Hank","Schrader")));
-        clickableAreas.add(new ClickableArea(987,429,105,129,new Person("Marie","Schrader")));
-        clickableAreas.add(new ClickableArea(1075,299,173,379,new Person("Skylar","White")));
-        clickableAreas.add(new ClickableArea(1260,441,257,325,new Person("Walter JR","\"Flynn\" White")));
+        clickableAreas.add(new ClickableArea(32, 184, 96, 137, new Person("Gustavo", "Fring")));
+        clickableAreas.add(new ClickableArea(125, 241, 75, 125, new Person("Saul", "Goodman")));
+        clickableAreas.add(new ClickableArea(175, 140, 52, 83, new Person("Mike", "Ehrmantraut")));
+        clickableAreas.add(new ClickableArea(230, 185, 47, 72, new Person("Jesse", "Pinkman")));
+        clickableAreas.add(new ClickableArea(275, 120, 112, 285, new Person("Walter", "\"Heisenberg\" White")));
+        clickableAreas.add(new ClickableArea(445, 225, 68, 117, new Person("Hank", "Schrader")));
+        clickableAreas.add(new ClickableArea(495, 214, 52, 62, new Person("Marie", "Schrader")));
+        clickableAreas.add(new ClickableArea(535, 150, 86, 180, new Person("Skylar", "White")));
+        clickableAreas.add(new ClickableArea(620, 220, 127, 160, new Person("Walter JR", "\"Flynn\" White")));
 
         return clickableAreas;
     }
@@ -64,16 +72,5 @@ public class MainActivity extends AppCompatActivity implements OnClickableAreaCl
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onClickableAreaTouched(Object item) {
-        String text = "";
-        if(item instanceof String){
-            text = (String) item;
-        } else if (item instanceof Person){
-            text = ((Person) item).getFirstName() + " " + ((Person) item).getLastName();
-        }
-        Toast.makeText(this,text, Toast.LENGTH_SHORT).show();
     }
 }
