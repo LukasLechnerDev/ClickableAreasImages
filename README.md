@@ -50,6 +50,8 @@ Sample Usage
                 Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
             }
         }
+    ...
+    }
 ```
 
 Download
