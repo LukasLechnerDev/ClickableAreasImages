@@ -19,6 +19,7 @@ Thanks to
 Sample Usage
 ========
 
+```java
     public class MainActivity extends AppCompatActivity implements OnClickableAreaClickedListener {
 
         @Override
@@ -48,6 +49,7 @@ Sample Usage
                 Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
             }
         }
+´´´
 
 Download
 ========
