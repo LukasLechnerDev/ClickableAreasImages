@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#4d954c</color>
-    <color name="colorPrimaryDark">#4d954c</color>
+    <color name="colorPrimary">@color/simpsonYellow</color>
+    <color name="colorPrimaryDark">@color/simpsonDarkYellow</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="simpsonYellow">#ffde00</color>
+    <color name="simpsonDarkYellow">#cdb935</color>
+
 </resources>

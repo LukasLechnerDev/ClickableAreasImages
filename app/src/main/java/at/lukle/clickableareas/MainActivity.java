@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements OnClickableAreaCl
 
         // Add image
         ImageView image = (ImageView) findViewById(R.id.imageView);
-        image.setImageResource(R.drawable.breaking_bad_people_small);
+        image.setImageResource(R.drawable.simpsons);
 
         // Create your image
         ClickableAreasImage clickableAreasImage = new ClickableAreasImage(new PhotoViewAttacher(image), this);
@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity implements OnClickableAreaCl
     // Listen for touches on your images:
     @Override
     public void onClickableAreaTouched(Object item) {
-        if (item instanceof Person) {
-            String text = ((Person) item).getFirstName() + " " + ((Person) item).getLastName();
+        if (item instanceof Character) {
+            String text = ((Character) item).getFirstName() + " " + ((Character) item).getLastName();
             Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
         }
     }
@@ -51,15 +51,11 @@ public class MainActivity extends AppCompatActivity implements OnClickableAreaCl
 
         List<ClickableArea> clickableAreas = new ArrayList<>();
 
-        clickableAreas.add(new ClickableArea(32, 184, 96, 137, new Person("Gustavo", "Fring")));
-        clickableAreas.add(new ClickableArea(125, 241, 75, 125, new Person("Saul", "Goodman")));
-        clickableAreas.add(new ClickableArea(175, 140, 52, 83, new Person("Mike", "Ehrmantraut")));
-        clickableAreas.add(new ClickableArea(230, 185, 47, 72, new Person("Jesse", "Pinkman")));
-        clickableAreas.add(new ClickableArea(275, 120, 112, 285, new Person("Walter", "\"Heisenberg\" White")));
-        clickableAreas.add(new ClickableArea(445, 225, 68, 117, new Person("Hank", "Schrader")));
-        clickableAreas.add(new ClickableArea(495, 214, 52, 62, new Person("Marie", "Schrader")));
-        clickableAreas.add(new ClickableArea(535, 150, 86, 180, new Person("Skylar", "White")));
-        clickableAreas.add(new ClickableArea(620, 220, 127, 160, new Person("Walter JR", "\"Flynn\" White")));
+        clickableAreas.add(new ClickableArea(150, 500, 225, 225, new Character("Lisa", "Simpson")));
+        clickableAreas.add(new ClickableArea(270, 120, 200, 260, new Character("Marge", "Simpson")));
+        clickableAreas.add(new ClickableArea(410, 390, 103, 90, new Character("Maggie", "Simpson")));
+        clickableAreas.add(new ClickableArea(500, 200, 125, 200, new Character("Homer", "Simpson")));
+        clickableAreas.add(new ClickableArea(600, 440, 130, 160, new Character("Bart", "Simpson")));
 
         return clickableAreas;
     }

@@ -8,7 +8,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main"
     tools:context=".MainActivity"
-    android:background="#000000">
+    android:background="@color/simpsonYellow">
 
     <ImageView
         android:id="@+id/imageView"
@@ -22,7 +22,7 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="10dp"
-        android:textColor="#ffffff"
+        android:textColor="#000000"
         android:text="Click on a character to see its name!"/>
 
     <TextView
@@ -32,7 +32,7 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="10dp"
-        android:textColor="#ffffff"
+        android:textColor="#000000"
         android:text="Tip: You can zoom in and turn your device!"/>
 
 </RelativeLayout>
