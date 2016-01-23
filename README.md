@@ -30,7 +30,7 @@ Sample Usage
 
             // Add image
             ImageView image = (ImageView) findViewById(R.id.imageView);
-            image.setImageResource(R.drawable.breaking_bad_people);
+            image.setImageResource(R.drawable.simpsons);
 
             // Create your image
             ClickableAreasImage clickableAreasImage = new ClickableAreasImage(new PhotoViewAttacher(image), this);
@@ -40,16 +40,15 @@ Sample Usage
 
             // Define your clickable areas
             // parameter values (pixels): (x coordinate, y coordinate, width, height) and assign an object to it
-            clickableAreas.add(new ClickableArea(230, 185, 47, 72, new Person("Jesse", "Pinkman")));
-            clickableAreas.add(new ClickableArea(275, 120, 112, 285, new Person("Walter", "\"Heisenberg\" White")));
-            clickableAreasImage.setClickableAreas(clickableAreas);
+            clickableAreas.add(new ClickableArea(500, 200, 125, 200, new Character("Homer", "Simpson")));
+        	clickableAreas.add(new ClickableArea(600, 440, 130, 160, new Character("Bart", "Simpson")));
         }
 
         // Listen for touches on your images:
         @Override
         public void onClickableAreaTouched(Object item) {
-            if (item instanceof Person) {
-                String text = ((Person) item).getFirstName() + " " + ((Person) item).getLastName();
+            if (item instanceof Character) {
+                String text = ((Character) item).getFirstName() + " " + ((Character) item).getLastName();
                 Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
             }
         }
