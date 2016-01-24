@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements OnClickableAreaCl
 
         // Add image
         ImageView image = (ImageView) findViewById(R.id.imageView);
-        image.setImageResource(R.drawable.simpsons);
+        image.setImageResource(R.drawable.austria_map);
 
         // Create your image
         ClickableAreasImage clickableAreasImage = new ClickableAreasImage(new PhotoViewAttacher(image), this);
@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity implements OnClickableAreaCl
     // Listen for touches on your images:
     @Override
     public void onClickableAreaTouched(Object item) {
-        if (item instanceof Character) {
-            String text = ((Character) item).getFirstName() + " " + ((Character) item).getLastName();
+        if (item instanceof State) {
+            String text = ((State) item).getName();
             Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
         }
     }
@@ -51,11 +51,17 @@ public class MainActivity extends AppCompatActivity implements OnClickableAreaCl
 
         List<ClickableArea> clickableAreas = new ArrayList<>();
 
-        clickableAreas.add(new ClickableArea(150, 500, 225, 225, new Character("Lisa", "Simpson")));
-        clickableAreas.add(new ClickableArea(270, 120, 200, 260, new Character("Marge", "Simpson")));
-        clickableAreas.add(new ClickableArea(410, 390, 103, 90, new Character("Maggie", "Simpson")));
-        clickableAreas.add(new ClickableArea(500, 200, 125, 200, new Character("Homer", "Simpson")));
-        clickableAreas.add(new ClickableArea(600, 440, 130, 160, new Character("Bart", "Simpson")));
+        clickableAreas.add(new ClickableArea(600, 100, 50, 50, new State("Lower Austria")));
+        clickableAreas.add(new ClickableArea(440, 125, 50, 50, new State("Upper Austria")));
+        clickableAreas.add(new ClickableArea(700, 126, 50, 50, new State("Vienna")));
+
+        clickableAreas.add(new ClickableArea(685, 270, 50, 50, new State("Burgenland")));
+        clickableAreas.add(new ClickableArea(420, 350, 50, 50, new State("Carinthia")));
+        clickableAreas.add(new ClickableArea(370, 245, 50, 50, new State("Salzburg")));
+
+        clickableAreas.add(new ClickableArea(170, 280, 50, 50, new State("Tyrol")));
+        clickableAreas.add(new ClickableArea(30, 280, 50, 50, new State("Vorarlberg")));
+        clickableAreas.add(new ClickableArea(570, 250, 50, 50, new State("Styria")));
 
         return clickableAreas;
     }
