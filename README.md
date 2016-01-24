@@ -10,7 +10,11 @@ ClickableAreasImages is an android library that lets you define rectangular clic
 
 Sample Application
 ==================
-soon ...
+
+I created a sample application.
+
+[![get it on Google Play](https://raw.githubusercontent.com/Lukle/ClickableAreasImages/master/images/google-play-badge.png)](https://play.google.com/store/apps/details?id=at.lukle.clickableareas.app)
+
 
 Sample Usage
 ========
