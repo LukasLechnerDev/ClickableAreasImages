@@ -2,6 +2,7 @@ package at.lukle.clickableareasimage;
 
 import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.view.View;
 import android.widget.ImageView;
 
