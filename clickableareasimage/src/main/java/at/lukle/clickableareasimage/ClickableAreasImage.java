@@ -2,6 +2,7 @@ package at.lukle.clickableareasimage;
 
 import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
+import android.support.annotation.VisibleForTesting;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -36,6 +37,7 @@ public class ClickableAreasImage implements PhotoViewAttacher.OnPhotoTapListener
     }
 
 
+    @VisibleForTesting
     private void getImageDimensions(ImageView imageView){
    
         BitmapDrawable drawable2 = (BitmapDrawable) imageView.getDrawable();

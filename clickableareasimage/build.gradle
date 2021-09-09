@@ -17,13 +17,27 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:23.+'
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.commit451:PhotoView:1.2.4'
-    testCompile 'junit:junit:4.12'
+    api 'com.android.support:appcompat-v7:23.+'
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api 'com.commit451:PhotoView:1.2.4'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation "io.mockk:mockk:1.12.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 repositories {

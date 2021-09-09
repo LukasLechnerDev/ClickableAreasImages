@@ -1,6 +1,7 @@
 package at.lukle.clickableareasimage
 
 import android.util.Log
+import kotlin.math.sqrt
 
 public class ClickableCircleArea<T>(
         private val x: Int,
@@ -15,8 +16,8 @@ public class ClickableCircleArea<T>(
         val dy = y - positionY
 
         // if tap is less than radius distance from the center
-        val d = Math.sqrt((dx * dx + dy * dy).toDouble()).toFloat()
-        if (d < radius) {
+        val d = sqrt((dx * dx + dy * dy).toDouble()).toFloat()
+        if (d <= radius) {
             ret = true
         }
         return ret

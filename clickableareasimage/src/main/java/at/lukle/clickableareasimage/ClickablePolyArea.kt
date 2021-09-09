@@ -1,6 +1,6 @@
 package at.lukle.clickableareasimage
 
-public class ClickablePolyArea<T>(item : T,
+public class ClickablePolyArea<T>(item: T,
                                   private vararg val points: PixelPosition)
     : AbstractArea<T>(item) {
 
@@ -10,6 +10,12 @@ public class ClickablePolyArea<T>(item : T,
         for(i in points.indices) {
             val pointI = points[i]
             val pointJ = points[j]
+
+            //case of point on the line
+            if ((positionX - pointI.x).toFloat() / (pointJ.x - pointI.x) == (positionY - pointI.y).toFloat() / (pointJ.y - pointI.y)) {
+                return true
+            }
+
             if (pointI.y > positionY != pointJ.y > positionY
                     && positionX < (pointJ.x - pointI.x) * (positionY - pointI.y)/ (pointJ.y - pointI.y) + pointI.x) {
                 c = !c
