@@ -2,6 +2,7 @@ package at.lukle.clickableareasimage;
 
 import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
+import android.support.annotation.VisibleForTesting;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -13,12 +14,13 @@ import uk.co.senab.photoview.PhotoViewAttacher;
 /**
  * Created by Lukas on 10/22/2015.
  */
+@SuppressWarnings("rawtypes")
 public class ClickableAreasImage implements PhotoViewAttacher.OnPhotoTapListener{
 
     private PhotoViewAttacher attacher;
     private OnClickableAreaClickedListener listener;
 
-    private List<ClickableArea> clickableAreas;
+    private List<? extends AbstractArea> clickableAreas;
 
     private int imageWidthInPx;
     private int imageHeightInPx;
@@ -35,51 +37,39 @@ public class ClickableAreasImage implements PhotoViewAttacher.OnPhotoTapListener
     }
 
 
+    @VisibleForTesting
     private void getImageDimensions(ImageView imageView){
    
         BitmapDrawable drawable2 = (BitmapDrawable) imageView.getDrawable();
-        //After SDK 28 (Android Pie), getBitmap() returns the actual size of the image on the screen
-        if (Build.VERSION.SDK_INT > 27) {
-            imageWidthInPx = (int) (drawable2.getBitmap().getWidth());
-            imageHeightInPx = (int) (drawable2.getBitmap().getHeight());
-        } else {
-            imageWidthInPx = (int) (drawable2.getBitmap().getWidth() / Resources.getSystem().getDisplayMetrics().density);
-            imageHeightInPx = (int) (drawable2.getBitmap().getHeight() / Resources.getSystem().getDisplayMetrics().density);
-        }
-
+        imageWidthInPx = (int) (drawable2.getBitmap().getWidth() / Resources.getSystem().getDisplayMetrics().density);
+        imageHeightInPx = (int) (drawable2.getBitmap().getHeight() / Resources.getSystem().getDisplayMetrics().density);
     }
         
 
     @Override
     public void onPhotoTap(View view, float x, float y) {
         PixelPosition pixel = ImageUtils.getPixelPosition(x, y, imageWidthInPx, imageHeightInPx);
-        List<ClickableArea> clickableAreas = getClickAbleAreas(pixel.getX(), pixel.getY());
-        for(ClickableArea ca : clickableAreas){
+        List<AbstractArea> clickableAreas = getClickAbleAreas(pixel.getX(), pixel.getY());
+        for(AbstractArea ca : clickableAreas){
             listener.onClickableAreaTouched(ca.getItem());
         }
     }
 
-    private List<ClickableArea> getClickAbleAreas(int x, int y){
-        List<ClickableArea> clickableAreas= new ArrayList<>();
-        for(ClickableArea ca : getClickableAreas()){
-            if(isBetween(ca.getX(),(ca.getX()+ca.getW()),x)){
-                if(isBetween(ca.getY(),(ca.getY()+ca.getH()),y)){
-                    clickableAreas.add(ca);
-                }
+    private List<AbstractArea> getClickAbleAreas(int x, int y){
+        List<AbstractArea> clickableAreas= new ArrayList<>();
+        for(AbstractArea ca : getClickableAreas()){
+            if (ca.isInside(x, y)) {
+                clickableAreas.add(ca);
             }
         }
         return clickableAreas;
     }
 
-    private boolean isBetween(int start, int end, int actual){
-        return (start <= actual && actual <= end);
-    }
-
-    public void setClickableAreas(List<ClickableArea> clickableAreas) {
+    public void setClickableAreas(List<? extends AbstractArea> clickableAreas) {
         this.clickableAreas = clickableAreas;
     }
 
-    public List<ClickableArea> getClickableAreas() {
+    public List<? extends AbstractArea> getClickableAreas() {
         return clickableAreas;
     }
 }

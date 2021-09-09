@@ -3,6 +3,7 @@ package at.lukle.clickableareas;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -11,11 +12,17 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import at.lukle.clickableareasimage.AbstractArea;
 import at.lukle.clickableareasimage.ClickableArea;
 import at.lukle.clickableareasimage.ClickableAreasImage;
+import at.lukle.clickableareasimage.ClickableCircleArea;
+import at.lukle.clickableareasimage.ClickablePolyArea;
+import at.lukle.clickableareasimage.ClickableRectangleArea;
 import at.lukle.clickableareasimage.OnClickableAreaClickedListener;
+import at.lukle.clickableareasimage.PixelPosition;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
+@SuppressWarnings("rawtypes")
 public class MainActivity extends AppCompatActivity implements OnClickableAreaClickedListener {
 
     private final String TAG = getClass().getSimpleName();
@@ -33,8 +40,7 @@ public class MainActivity extends AppCompatActivity implements OnClickableAreaCl
         ClickableAreasImage clickableAreasImage = new ClickableAreasImage(new PhotoViewAttacher(image), this);
 
         // Define your clickable area (pixel values: x coordinate, y coordinate, width, height) and assign an object to it
-        List<ClickableArea> clickableAreas = getClickableAreas();
-        clickableAreasImage.setClickableAreas(clickableAreas);
+        clickableAreasImage.setClickableAreas(getClickableAreas());
     }
 
     // Listen for touches on your images:
@@ -47,21 +53,40 @@ public class MainActivity extends AppCompatActivity implements OnClickableAreaCl
     }
 
     @NonNull
-    private List<ClickableArea> getClickableAreas() {
+    private List<AbstractArea> getClickableAreas() {
 
-        List<ClickableArea> clickableAreas = new ArrayList<>();
+        List<AbstractArea> clickableAreas = new ArrayList<>();
 
-        clickableAreas.add(new ClickableArea(600, 100, 50, 50, new State("Lower Austria")));
-        clickableAreas.add(new ClickableArea(440, 125, 50, 50, new State("Upper Austria")));
-        clickableAreas.add(new ClickableArea(700, 126, 50, 50, new State("Vienna")));
+        clickableAreas.add(new ClickableRectangleArea<>(600, 100, 50, 50, new State("Lower Austria")));
+        clickableAreas.add(new ClickableRectangleArea<>(440, 125, 50, 50, new State("Upper Austria")));
+        clickableAreas.add(new ClickableRectangleArea<>(700, 126, 50, 50, new State("Vienna")));
 
-        clickableAreas.add(new ClickableArea(685, 270, 50, 50, new State("Burgenland")));
-        clickableAreas.add(new ClickableArea(420, 350, 50, 50, new State("Carinthia")));
-        clickableAreas.add(new ClickableArea(370, 245, 50, 50, new State("Salzburg")));
+        clickableAreas.add(new ClickableCircleArea<>(715, 300, 27, new State("Burgenland")));
+        clickableAreas.add(new ClickableCircleArea<>(450, 380, 27, new State("Carinthia")));
+        clickableAreas.add(new ClickableCircleArea<>(400, 275, 27, new State("Salzburg")));
 
-        clickableAreas.add(new ClickableArea(170, 280, 50, 50, new State("Tyrol")));
-        clickableAreas.add(new ClickableArea(30, 280, 50, 50, new State("Vorarlberg")));
-        clickableAreas.add(new ClickableArea(570, 250, 50, 50, new State("Styria")));
+
+        clickableAreas.add(new ClickablePolyArea<>(new State("Tyrol"),
+                new PixelPosition(170,280),
+                new PixelPosition(160,330),
+                new PixelPosition(190, 340),
+                new PixelPosition(220,330),
+                new PixelPosition(220, 280),
+                new PixelPosition(195, 270)));
+        clickableAreas.add(new ClickablePolyArea<>(new State("Vorarlberg"),
+                new PixelPosition(30, 280),
+                new PixelPosition(20, 330),
+                new PixelPosition(50, 340),
+                new PixelPosition(80, 330),
+                new PixelPosition(80, 280),
+                new PixelPosition(55, 270)));
+        clickableAreas.add(new ClickablePolyArea<>(new State("Styria"),
+                new PixelPosition(570, 250),
+                new PixelPosition(560, 300),
+                new PixelPosition(590, 310),
+                new PixelPosition(620, 300),
+                new PixelPosition(620, 250),
+                new PixelPosition(595, 240)));
 
         return clickableAreas;
     }
